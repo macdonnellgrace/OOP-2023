@@ -3,10 +3,8 @@ package ie.tudublin;
 import processing.core.PApplet;
 
 public class BugZap extends PApplet {
-
-
 	public void settings() {
-		size(500, 500);
+		size(1000, 1000);
 	}
 
 	public void setup() {
@@ -18,16 +16,13 @@ public class BugZap extends PApplet {
 	float playerWidth = 40;
 	float halfPlayerWidth = playerWidth / 2;
 
-	float bugX, bugY, bugWidth = 30;
+	float bugX, bugY, bugWidth = 100;
 	float halfBugWidth = bugWidth / 2;
 
 	int score = 0;
 
 	void reset() {
 		resetBug();
-
-		// x and y coords of player are in the middle of the screen
-		// proportionate to screen size
 		playerX = width / 2;
 		playerY = height - 50;
 	}
@@ -40,17 +35,44 @@ public class BugZap extends PApplet {
 	void drawBug(float x, float y) {
 		// Draw the bug
 		stroke(255);
-		triangle(x, y, x-10, y+10, x+10, y+10);
+		float saucerHeight = bugWidth * 0.7f;
+		line(x, y - saucerHeight, x - halfBugWidth, y);
+		line(x, y - saucerHeight, x + halfBugWidth, y);
+		// line(x - halfBugWidth, y, x - halfBugWidth, y);
+		line(x - halfBugWidth, y, x + halfBugWidth, y);
+		float feet = bugWidth * 0.1f;
+		line(x - feet, y, x - halfBugWidth, y + halfBugWidth);
+		line(x + feet, y, x + halfBugWidth, y + halfBugWidth);
+
+		feet = bugWidth * 0.3f;
+		line(x - feet, y, x - halfBugWidth, y + halfBugWidth);
+		line(x + feet, y, x + halfBugWidth, y + halfBugWidth);
+
+		float eyes = bugWidth * 0.1f;
+		line(x - eyes, y - eyes, x - eyes, y - eyes * 2f);
+		line(x + eyes, y - eyes, x + eyes, y - eyes * 2f);
+
 	}
 
 	void drawPlayer(float x, float y, float w) {
-
 		stroke(255);
-		circle(x, y, w);
+		float playerHeight = w / 2;
+		line(x - halfPlayerWidth, y + playerHeight, x + halfPlayerWidth, y + playerHeight);
+		line(x - halfPlayerWidth, y + playerHeight, x - halfPlayerWidth, y + playerHeight * 0.5f);
+		line(x + halfPlayerWidth, y + playerHeight, x + halfPlayerWidth, y + playerHeight * 0.5f);
+
+		line(x - halfPlayerWidth, y + playerHeight * 0.5f, x - (halfPlayerWidth * 0.8f), y + playerHeight * 0.3f);
+		line(x + halfPlayerWidth, y + playerHeight * 0.5f, x + (halfPlayerWidth * 0.8f), y + playerHeight * 0.3f);
+
+		line(x - (halfPlayerWidth * 0.8f), y + playerHeight * 0.3f, x + (halfPlayerWidth * 0.8f),
+				y + playerHeight * 0.3f);
+
+		line(x, y, x, y + playerHeight * 0.3f);
 
 	}
 
 	public void keyPressed() {
+		
 		if (keyCode == LEFT) {
 			if (playerX > halfPlayerWidth) {
 				playerX -= playerSpeed;
@@ -65,29 +87,20 @@ public class BugZap extends PApplet {
 		{
 			if (playerX > bugX - halfBugWidth && playerX < bugX + halfBugWidth)
 			{
-				stroke(255,0,0);
 				line(playerX, playerY, playerX, bugY);
 				score ++;
 				resetBug();
-				
 			}
 			else
 			{
-				stroke(255,0,0);
 				line(playerX, playerY, playerX, 0);
-				stroke(0,0,0);
 			}
 		}
 	}
 
 	void moveBug() {
-		// every second
 		if ((frameCount % 30) == 0) {
-
-			// x coord moves random place
 			bugX += random(-5, 5);
-
-			
 			if (bugX < halfBugWidth) {
 				bugX = halfBugWidth;
 			}
@@ -102,6 +115,8 @@ public class BugZap extends PApplet {
 
 	public void draw() {
 		background(0);
+		fill(255);
+		text("Score: " + score, 50, 100);
 		if (gameMode == 0)
 		{
 			fill(255);
@@ -114,7 +129,7 @@ public class BugZap extends PApplet {
 		else
 		{
 			textAlign(CENTER, CENTER);
-			text("GAME OVER", width / 2, height / 2);
+			text("GAME OVER!!!", width / 2, height / 2);
 		}
 
 		if (bugY > height - 50)

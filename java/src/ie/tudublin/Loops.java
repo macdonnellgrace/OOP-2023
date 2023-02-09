@@ -48,12 +48,12 @@ public class Loops extends PApplet {
 			case 1:
 
 			int coOrd = (int) max(1, mouseX / 50.0f);
-			float x = mouseX;
-			float y = mouseY;
+			float x2 = mouseX-50;
+			float y2 = mouseY - 50;
 			
 			fill((mouseX) % 256, 255, 255);
 
-			square(mouseX-50, mouseY-50, 90);
+			square(x2, y2, 90);
 
 			off++;
 				break;

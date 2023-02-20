@@ -1,9 +1,18 @@
 package ie.tudublin;
 
+import ddf.minim.AudioInput;
+import ddf.minim.AudioPlayer;
+import ddf.minim.AudioBuffer;
+import ddf.minim.Minim;
 import processing.core.PApplet;
 
 public class audio1 extends PApplet
 {
+
+    Minim minim;
+    AudioInput ai;
+    AudioPlayer ap;
+    AudioBuffer ab;
 
 	public void settings()
 	{
@@ -14,19 +23,9 @@ public class audio1 extends PApplet
 		colorMode(HSB);
 		background(0);
 
-		x1 = random(0, width);
-		x2 = random(0, width);
-		y1 = random(0, height);
-		y2 = random(0, height);
+        minim = new Minim(this);
 
-		float range = 5;
-
-		x1dir = random(-range, range);
-		x2dir = random(-range, range);
-		y1dir = random(-range, range);
-		y2dir = random(-range, range);
-
-		smooth();
+        ai = minim.getLineIn(Minim.MONO)
 		
 	}
 	

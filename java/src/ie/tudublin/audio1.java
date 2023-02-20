@@ -25,7 +25,7 @@ public class audio1 extends PApplet
 
         minim = new Minim(this);
 
-        ai = minim.getLineIn(Minim.MONO)
+        ai = minim.getLineIn(Minim.MONO);
 		
 	}
 	

@@ -4,6 +4,7 @@ import ddf.minim.AudioBuffer;
 import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
+import ddf.minim.analysis.FFT;
 import processing.core.PApplet;
 
 public class audio2 extends PApplet
@@ -12,6 +13,8 @@ public class audio2 extends PApplet
     AudioPlayer ap;
     AudioInput ai;
     AudioBuffer ab;
+
+    FFT fft;
 
     public void settings()
     {
@@ -32,23 +35,27 @@ public class audio2 extends PApplet
 
     public void draw()
     {   
+          background(0);
+          stroke(255);
+          
+          float half = height / 2;
+          for(int i = 0; i < ab.size(); i++)
+          {
+
+            line(i, half, 1, half + ab.get(i) *half );
+
             
+          }
+
+          println(map(5, 0, 10, 1000, 2000));
     }
 
+    fft.forward(ab);
 
-        
-        // Other examples we made in the class
-        /*
-        stroke(255);
-        fill(100, 255, 255);        
-        
-        circle(width / 2, halfH, lerpedA * 100);
-
-        circle(100, y, 50);
-        y += random(-10, 10);
-        smoothedY = lerp(smoothedY, y, 0.1f);        
-        circle(200, smoothedY, 50);
-        */
+    for (int i = 0; i < fft.specSize(); i++ )
+    {
+        line(i, height, i, height - fft.getBand(i) * 5.0f)
+    }
 
     }        
-}
+

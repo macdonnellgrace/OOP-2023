@@ -48,6 +48,11 @@ public class Main
 		penny.speak();
 
 		audio2();
+		PitcherSpeller ps = new PitcherSpeller();
+		System.out.println(ps.spell(330));
+		System.out.println(ps.spell(420));
+		System.out.println(ps.spell(1980));
 	}
+	
 	
 }

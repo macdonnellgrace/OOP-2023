@@ -66,26 +66,9 @@ public class Audio2 extends PApplet{
         textSize(20);
         text("Freq: " + freq, 100, 100);
 
-        float y = map(freq, 1000.0f, 2500.0f, height, 0);
-        lerpedY = lerp(lerpedY, y, 0.1f);
-        circle(200, y, 50);
-        circle(300, lerpedY, 50);
-        
-
-
-
         //println(map(5, 2, 10, 1000, 2000));
         //println(map1(5, 2, 10, 1000, 2000));
     }
 
     float lerpedY = 0;
-    
-    float map1(float a, float b, float c, float d, float e)
-    {
-        float range1 = c - b;
-        float range2 = e - d;
-        float howFar = a - b;
-
-        return d + (howFar / range1) * range2;
-    }
 }

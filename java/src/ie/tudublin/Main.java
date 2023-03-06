@@ -59,15 +59,7 @@ public class Main
 		penny.setName("Penny");
 		penny.speak();
 
-<<<<<<< HEAD
-		audio2();
-		PitcherSpeller ps = new PitcherSpeller();
-		System.out.println(ps.spell(330));
-		System.out.println(ps.spell(420));
-		System.out.println(ps.spell(1980));
-=======
 		life();
->>>>>>> 44b46f78b67684c08ae612f4dc0d0d719be21c5d
 	}
 	
 	

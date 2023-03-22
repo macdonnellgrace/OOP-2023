@@ -51,6 +51,12 @@ public class Main
         processing.core.PApplet.runSketch( a, new Life());
     }
 	
+	public static void yasc()
+	{
+		String[] a = {"MAIN"};
+        processing.core.PApplet.runSketch( a, new YASC());
+    }
+	
 	public static void main(String[] args)
 	{
 		System.out.println("Hello world");
@@ -60,6 +66,7 @@ public class Main
 		penny.speak();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		audio2();
 		PitcherSpeller ps = new PitcherSpeller();
 		System.out.println(ps.spell(330));
@@ -68,6 +75,9 @@ public class Main
 =======
 		life();
 >>>>>>> 44b46f78b67684c08ae612f4dc0d0d719be21c5d
+=======
+		starMap();
+>>>>>>> 5320ca591a4631b9afe251d58295b6421e27d010
 	}
 	
 	
